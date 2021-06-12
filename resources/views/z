@@ -1,0 +1,1215 @@
+<body>
+        <!-- <div class="edit_profil">
+            <h1>Profil</h1><hr>
+            <form action="../EditProfil" method="post">
+            @csrf
+            <fieldset>
+                <table>
+                    @foreach($profil as $profil)
+                    <input type="text" name="username" value="{{$profil->username}}" hidden></input>
+                    <tr>
+                        <td>Username</td>
+                        <td align="center">:</td>
+                        <td>{{$profil->username}}<hr></td>
+                        <td align="center" rowspan="5" width="150px">
+                        @if(Session::has('alert1'))
+                            <div style="color:green">{{Session::get('alert1')}}</div></br>
+                        @endif
+                        @if(Session::has('alert2'))
+                            <div style="color:red">{{Session::get('alert2')}}</div></br>
+                        @endif
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Nama</td>
+                        <td align="center">:</td>
+                        <td>
+                            <input type="text" name="nama" value="{{$profil->nama}}" required></input><hr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td align="center">:</td>
+                        <td>
+                            <input type="email" name="email" value="{{$profil->email}}" required></input><hr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>No Telepon</td>
+                        <td align="center">:</td>
+                        <td>
+                            <input type="number" name="no_telepon" value="{{$profil->no_telepon}}" required></input><hr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td align="center">:</td>
+                        <td>
+                            <input type="password" name="password" value="{{$profil->password}}" required></input><hr>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>Konfirmasi Password</td>
+                        <td align="center">:</td>
+                        <td>
+                            <input type="password" name="cek_password" placeholder="Confirm Password"></input><hr>
+                        </td>
+                        <td align="center"><button name="confirm">confirm</button></td>
+                    </tr>
+                    @endforeach
+                </table>
+            </fieldset>
+            </form>
+            <a class="link" href="../dashboard">BACK</a>
+        </div> -->
+    </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body table-responsive p-0" style="height: 400px;">
+                <table class="table table-head-fixed text-nowrap">
+                  <thead align="center">
+                        <th>#</th>
+                        <th>ID</th>
+                        <th>Kategori</th>
+                        <th>Judul</th>
+                        <th>Isi</th>
+                        <th>File Pendukung</th>
+                        <th colspan="2">action</th>
+                    </thead>
+                  <tbody>
+                    @foreach($pengumuman as $pengumuman)
+                    <tr>
+                        <td width="" scope="row">{{ $loop->iteration }}</td>
+                        <td width="">{{$pengumuman->id}}</td>
+                        <td width="">{{$pengumuman->kategori_pengumuman}}</td>
+                        <td width="">{{$pengumuman->judul_pengumuman}}</td>
+                        <td width=""><?php echo substr($pengumuman->isi_pengumuman,0,50);?>...</td>
+                        <td width="" align="center">
+                            <img height="65px" width="65px" src="./aplikasi/u_file/image/{{$pengumuman->foto_pendukung}}">
+                        </td>
+                        <td width="" align="center"><a href="./edit_pengumuman/{{$pengumuman->id}}" class="btn btn-info btn-sm "><i class="fas fa-pencil-alt"></i> Edit</a></td>
+                        <td width="" align="center"><a href="./delete_pengumuman/{{$pengumuman->id}}" class="btn btn-danger btn-sm "><i class="fas fa-trash"></i> Hapus</a></td>
+                        <!-- <td width="50px"><a href="./delete/{{$pengumuman->id}}" style="color:red; text-decoration: none;">delete</a></td> -->
+                    </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+<!-- <div>
+        @foreach($artikel_video as $video)
+          <table align="center" border="1">
+            <tr>
+              <td>
+                <img src="">
+              </td>
+              <td class="info_pengumuman" valign="top">
+                  
+                  <a href="{{$video->link}}">
+                    <text>{{$video->caption}}</text>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{$video->kode_link_video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </a><br>
+              </td>
+            </tr>
+            
+          </table><br>
+          @endforeach
+          @foreach($artikel_informasi as $informasi)
+          <table align="center" border="1">
+            <tr>
+              <td>
+                <img src="">
+              </td>
+              <td class="info_pengumuman" valign="top">
+                  
+                  <a href="{{$informasi->link}}">
+                    <text>{{$informasi->caption}}</text>
+                    <img src="./aplikasi/u_file/image/{{$informasi->foto_pendukung}}">
+                  </a><br>
+              </td>
+            </tr>
+            
+          </table><br>
+          @endforeach
+          
+        </div> -->
+    </div>
+
+    
+<!-- <div class="artikel">
+  <div class="artikel_vi">  
+    <div class="video">
+      <div class="slideshow-container2">
+        @foreach($artikel_video as $video)
+        <div class="mySlides2 fade2">
+          <div class="numbertext2">1 / 5</div>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/{{$video->kode_link_video}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <div class="text2" style="color:black">{{$video->caption}}</div>
+        </div>
+        @endforeach
+        <a class="prev2" onclick="plusSlides2(-1)">&#10094;</a>
+        <a class="next2" onclick="plusSlides2(1)">&#10095;</a>
+      </div>
+      <br>
+
+      <div style="text-align:center">
+      @foreach($artikel_video as $video)
+        <span class="dot2" onclick="currentSlide2($loop->iteration)"></span> 
+      @endforeach
+      </div>
+    </div>
+    <script>
+      var slideIndex = 1;
+      showSlides2(slideIndex);
+
+      function plusSlides2(n) {
+        showSlides2(slideIndex += n);
+      }
+
+      function currentSlide2(n) {
+        showSlides2(slideIndex = n);
+      }
+
+      function showSlides2(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides2");
+        var dots = document.getElementsByClassName("dot2");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active2", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active2";
+      }
+    </script>
+
+        <div class="informasi">
+          @foreach($artikel_informasi as $informasi)
+          <table align="center" >
+            <tr>
+              <td>
+                <img src="./aplikasi/u_file/image/{{$informasi->foto_pendukung}}">
+              </td>
+              <td class="info_pengumuman" valign="top">
+                  
+                  <a href="{{$informasi->link}}">{{$informasi->caption}}</a><br>
+              </td>
+            </tr>
+            
+          </table><br>
+          @endforeach
+        </div>
+  </div>
+</div> -->
+
+
+
+
+visibility: hidden;
+    z-index:1000;
+    position:fixed;
+
+
+
+
+
+&#x25BE;
+
+
+
+
+
+
+
+
+   .btn {
+    position: absolute;
+    top: 1.25em;
+    right: 5%;
+    z-index: 100;
+    padding: 0.25em 2%;
+    color: #fff;
+    border-radius: 0.25em;
+    background-color: #5b5756;
+    background-image: -webkit-linear-gradient(top, #6b6766, #5b5756);
+    background-image:    -moz-linear-gradient(top, #6b6766, #5b5756);
+    background-image:     -ms-linear-gradient(top, #6b6766, #5b5756);
+    background-image:      -o-linear-gradient(top, #6b6766, #5b5756);
+    background-image:         linear-gradient(top, #6b6766, #5b5756);
+  }
+   
+  .btn:hover {
+    background-color: #7b7776;
+    background-image: -webkit-linear-gradient(top, #8b8786, #7b7776);
+    background-image:    -moz-linear-gradient(top, #8b8786, #7b7776);
+    background-image:     -ms-linear-gradient(top, #8b8786, #7b7776);
+    background-image:      -o-linear-gradient(top, #8b8786, #7b7776);
+    background-image:         linear-gradient(top, #8b8786, #7b7776);
+  }
+  #toggle {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+   
+  #toggle:checked ~ nav .H {
+    display: inherit;
+  }
+  #toggle:checked ~ nav .H a {
+    line-height: 3em;
+    height: 3em;
+    border-bottom: 1px solid #999;
+    position: relative;
+    z-index: 1;
+  }
+  #toggle:checked ~ nav .H a:hover {
+    background: #555;
+  }
+   
+  #toggle:checked ~ nav .H #close {
+    position: relative;
+    z-index: 0;
+  }
+   
+  #toggle:checked ~ nav .H #close label {
+    background: transparent;
+    border-bottom: 0;
+    position: absolute;
+    top: -101em;
+    bottom: -101em;
+    left: 0;
+    right: 0;
+    z-index: 0;
+  }
+  @media screen and (min-width: 1300px) {
+    .btn {display: none;}
+}
+
+.H #close {
+    display: none;
+  }
+  
+  
+  
+
+@media screen and (max-width: 1300px) {
+    .H_L{
+        display: none;
+    }
+    .H_L ul {
+        float: none; } 
+    .H_L a {
+        font-size: 15;
+    }
+    .l_isi-dropdown {
+        position: relative;
+    }
+    .l_isi-dropdown li{
+        text-align: center;
+    }
+}
+
+
+
+
+
+
+
+
+
+      <div class="header">
+            <div class="d_logo">
+                <center><img class="logo" src="{{ URL::asset('asset/image/logo.jpeg') }}" alt="logo"></center>
+            <header class="name" align="center"><b>GEREJA ST.YOSEPH</b></header>
+            </div>
+            <!-- <center><hr style="width:750px; border-color:gray; border-top-width:0"></center> -->
+            <center>
+            <label class="btn" for="toggle" onclick>Menu</label>
+            <input id="toggle" type="checkbox" />
+            <nav>
+            <div class="H H_L" align="center">  
+                <ul style="border-bottom: 1px solid black;">
+                    <li>
+                        <a href="#">HOME</a>
+                    </li>
+                </ul>
+                <!-- <ul>
+                    <li><a href="./profil">PROFIL</a></li>
+                </ul> -->
+                <ul>
+                    <li class="l_dropdown"><a href="#">PROFIL</a>
+                        <ul class="l_isi-dropdown">
+                            <li><a href="./pastor_paroki">Pastor Paroki</a></li>
+                            <li><a href="./sejarah">Sejarah</a></li>
+                            <li><a href="./stasi">Stasi</a></li>
+                            <li><a href="./visi_misi">Visi dan Misi</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li><a href="./kerasulan">KERASULAN</a></li>
+                </ul>
+                <ul>
+                    <li><a href="./pengumuman">PENGUMUMAN</a></li>
+                </ul>
+                <ul>
+                    <li><a href="./aula">AULA</a></li>
+                </ul>
+            </div>
+            </center>
+
+            <div class="H H_R">
+                <ul>
+                    <li><a href="./login">LOGIN</a></li>
+                </ul>
+            </div>
+            </nav>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@foreach($pesanan_aula as $pesanan)
+			<tr>
+				<td width="150px">ID Penyewaan</td>
+				<td width="10px" align="center">:</td>
+				<td  width="380px">{{$pesanan->id}}</td>
+			</tr>
+			<tr>
+				<td width="150px">Nama Penyewa</td>
+				<td width="10px" align="center">:</td>
+				<td  width="380px">{{$pesanan->nama}}</td>
+			</tr>
+			<tr>
+				<td width="150px">No. Telepon</td>
+				<td width="10px" align="center">:</td>
+				<td  width="380px">{{$pesanan->no_telepon}}</td>
+			</tr>
+			<tr>
+				<td width="150px">Alamat Penyewa</td>
+				<td width="10px" align="center">:</td>
+				<td  width="380px">{{$pesanan->nama}}</td>
+			</tr>
+			<tr>
+				<td width="150px">Waktu Penyewaan</td>
+				<td width="10px" align="center">:</td>
+				<td  width="380px">{{$pesanan->tanggal_mulai}} - {{$pesanan->tanggal_selesai}}</td>
+			</tr>
+			<tr>
+				<td width="150px">Keperluan</td>
+				<td width="10px" align="center">:</td>
+				<td  width="380px">{{$pesanan->keperluan}}</td>
+			</tr>
+			<tr>
+				<td width="150px">Biaya Sewa</td>
+				<td width="10px" align="center">:</td>
+					<?php
+						$jumlah_waktu_penyewaan = date("d", strtotime($pesanan->tanggal_selesai)) - date("d", strtotime($pesanan->tanggal_mulai));
+						$biaya_sewa = 1500000 * $jumlah_waktu_penyewaan
+					?>
+				<td  width="380px">Rp.{{$biaya_sewa}} </td>
+			</tr>
+			<tr>
+				<td width="150px">Biaya Tambahan</td>
+				<td width="10px" align="center">:</td>
+				<td  width="380px"></td>
+			</tr>
+			<tr>
+				<td width="150px">Total Biaya</td>
+				<td width="10px" align="center">:</td>
+				<td  width="380px">Rp.{{$biaya_sewa}}</td>
+			</tr>
+		@endforeach 
+
+
+
+
+
+
+
+
+    
+
+    
+                <div class="card-body">
+                  <div class="row form-group">
+                    <input type="text" name="id" value="{{$data_baptis->id}}" hidden></input>
+                    <input type="text" name="username" value="{{$data_baptis->username}}" hidden></input>
+                    <label class="col-sm-2 col-form-label">Nama</label>
+                    <div class="col-6">
+                        <input type="text" name="nama" class="form-control" value="{{$data_baptis->nama}}" required>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <label class="col-sm-2 col-form-label">Tempat Lahir</label>
+                    <div class="col-6">
+                        <input type="text" name="tempat_lahir" class="form-control" value="{{$data_baptis->tempat_lahir}}" required>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <label class="col-sm-2 col-form-label">Tanggal Lahir</label>
+                    <div class="col-6">
+                        <input type="date" name="tanggal_lahir" class="form-control" value="{{$data_baptis->tanggal_lahir}}" required>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <label class="col-sm-2 col-form-label">Jenis Kelamin</label>
+                    <div class="col-6">
+                      <select name="jenis_kelamin" class="form-control" required>
+                        <option selected="selected" value="{{$data_baptis->jenis_kelamin}}">{{$data_baptis->jenis_kelamin}}</option>
+                        @if($data_baptis->jenis_kelamin=='laki-laki')
+                        <option value="perempuan">Perempuan</option>
+                        @endif
+                        @if($data_baptis->jenis_kelamin=='perempuan')
+                        <option value="laki-laki">Laki-Laki</option>
+                        @endif
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <label class="col-sm-2 col-form-label">Nama Ayah</label>
+                    <div class="col-6">
+                        <input type="text" name="nama_ayah" class="form-control" value="{{$data_baptis->nama_ayah}}" required>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <label class="col-sm-2 col-form-label">Nama Ibu</label>
+                    <div class="col-6">
+                        <input type="text" name="nama_ibu" class="form-control" value="{{$data_baptis->nama_ibu}}" required>
+                    </div>
+                  </div>
+                  <div class="row form-group">
+                    <label class="col-sm-2 col-form-label">Bukti Surat Nikah Orangtua</label>
+                    <div class="input-group col-6">
+                      <div class="custom-file">
+                        <!--Foto Pedukung Lama-->
+                        <input type="text" name="surat_nikah_orangtua_lama" class="form-control" 
+                        value="{{$data_baptis->bukti_surat}}" required>
+                        <!--Foto Pedukung Baru-->
+                        <input type="file" name="surat_nikah_orangtua" class="custom-file-input">
+                        <label class="custom-file-label">{{$data_baptis->bukti_surat}}</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                @if($bukti->bukti_pembayaran=='-')
+                  @if(Session::has('alert'))
+                  <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-check"></i> Berhasil Terkirim</h5>
+                    Bukti Pembayaran Anda Telah Terkirim.
+                  </div>
+                  @endif
+                @elseif($bukti->bukti_pembayaran!='-')
+                  @if(Session::has('alert'))
+                  <div class="alert alert-warning alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h5><i class="icon fas fa-check"></i> Berhasil Mengganti</h5>
+                    Bukti Pembayaran Anda Telah Diganti.
+                  </div>
+                  @endif
+                @endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@if(Session::get('role'))
+
+<html>
+    <head>
+        <link href="{{ URL::asset('asset/css/style.css') }}" rel="stylesheet">
+        <link rel="icon" href="{{ URL::asset('asset/image/logo.jpeg') }}">
+        <title>@yield('title')</title>
+    </head>
+    <body>
+    @if(Session::get('role')=='masyarakat')
+    <div class="header">
+            <div class="d_logo">
+                <img class="logo" src="{{ URL::asset('asset/image/logo.png') }}" alt="logo">
+                <header class="name"><b>GEREJA St.YOSEPH Parsoburan</b></header>
+            </div>
+            <!-- <center><hr style="width:750px; border-color:gray; border-top-width:0"></center> -->
+            
+            <label class="btn" for="toggle" onclick="myFunction(this)">
+                <div class="container">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+                <script>
+                    function myFunction(x) {
+                    x.classList.toggle("change");
+                    }
+                </script>
+            </label>
+            <input id="toggle" type="checkbox" />
+            <nav>
+                <div class="H H_L" align="center">  
+                    <ul>
+                        <li>
+                            <a href="./">BERANDA</a>
+                        </li>
+                    </ul>
+                    <!-- <ul>
+                        <li><a href="./profil">PROFIL</a></li>
+                    </ul> -->
+                    <ul style="border-bottom: 1px solid black;">
+                        <li class="l_dropdown"><a href="#">PROFIL &#x25BE;</a>
+                            <ul class="l_isi-dropdown">
+                                <li><a href="./pastor_paroki">Pastor Paroki</a></li>
+                                <li><a href="./sejarah">Sejarah</a></li>
+                                <li><a href="./stasi">Stasi</a></li>
+                                <li style="border-bottom: 1px solid black;"><a href="./visi_misi">Visi dan Misi</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li><a href="./kerasulan">KERASULAN</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="./pengumuman">PENGUMUMAN</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="./aula">AULA</a></li>
+                    </ul>
+                </div>
+                
+
+                <div class="H H_R">
+                <ul>
+                    <li class="r_dropdown"><b><a class="r_li_u">{{Session::get('username')}} &#x25BE;</a></b>
+                        <ul class="r_isi-dropdown">
+                            <!-- <li style="margin-top:20px;"><a href="./profil/{{Session::get('username')}}">| EDIT PROFIL</a></li> -->
+                            <li><a href="./logout">| LOGOUT</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="./dashboard" >
+                            <button style="color: white; background-color:orange; 
+                            border-radius: 10px; padding:10px; margin-top:-5;border: 2px solid black">DASHBOARD
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            </nav>
+        </div>
+        
+        @elseif(Session::get('role')=='umat')
+        <div class="header">
+            <div class="d_logo">
+                <img class="logo" src="{{ URL::asset('asset/image/logo.png') }}" alt="logo">
+                <header class="name"><b>GEREJA St.YOSEPH Parsoburan</b></header>
+            </div>
+            <!-- <center><hr style="width:750px; border-color:gray; border-top-width:0"></center> -->
+            
+            <label class="btn" for="toggle" onclick="myFunction(this)">
+                <div class="container">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+                <script>
+                    function myFunction(x) {
+                    x.classList.toggle("change");
+                    }
+                </script>
+            </label>
+            <input id="toggle" type="checkbox" />
+            <nav>
+                <div class="H H_L" align="center">  
+                    <ul>
+                        <li>
+                            <a href="./">BERANDA</a>
+                        </li>
+                    </ul>
+                    <!-- <ul>
+                        <li><a href="./profil">PROFIL</a></li>
+                    </ul> -->
+                    <ul style="border-bottom: 1px solid black;">
+                        <li class="l_dropdown"><a href="#">PROFIL &#x25BE;</a>
+                            <ul class="l_isi-dropdown">
+                                <li><a href="./pastor_paroki">Pastor Paroki</a></li>
+                                <li><a href="./sejarah">Sejarah</a></li>
+                                <li><a href="./stasi">Stasi</a></li>
+                                <li style="border-bottom: 1px solid black;"><a href="./visi_misi">Visi dan Misi</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li><a href="./kerasulan">KERASULAN</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="./pengumuman">PENGUMUMAN</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="./aula">AULA</a></li>
+                    </ul>
+                </div>
+                
+
+                <div class="H H_R">
+                <ul>
+                    <li class="r_dropdown"><b><a class="r_li_u">{{Session::get('username')}} &#x25BE;</a></b>
+                        <ul class="r_isi-dropdown">
+                            <!-- <li style="margin-top:20px;"><a href="./profil/{{Session::get('username')}}">| EDIT PROFIL</a></li> -->
+                            <li><a href="./logout">| LOGOUT</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="./dashboard" >
+                            <button style="color: white; background-color:orange; 
+                            border-radius: 10px; padding:10px; margin-top:-5;border: 2px solid black">DASHBOARD
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            </nav>
+        </div>
+
+        @elseif(Session::get('role')=='pastor')
+        <div class="header">
+            <div class="d_logo">
+                <img class="logo" src="{{ URL::asset('asset/image/logo.png') }}" alt="logo">
+                <header class="name"><b>GEREJA St.YOSEPH Parsoburan</b></header>
+            </div>
+            <!-- <center><hr style="width:750px; border-color:gray; border-top-width:0"></center> -->
+            
+            <label class="btn" for="toggle" onclick="myFunction(this)">
+                <div class="container">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+                <script>
+                    function myFunction(x) {
+                    x.classList.toggle("change");
+                    }
+                </script>
+            </label>
+            <input id="toggle" type="checkbox" />
+            <nav>
+                <div class="H H_L" align="center">  
+                    <ul>
+                        <li>
+                            <a href="./">BERANDA</a>
+                        </li>
+                    </ul>
+                    <!-- <ul>
+                        <li><a href="./profil">PROFIL</a></li>
+                    </ul> -->
+                    <ul style="border-bottom: 1px solid black;">
+                        <li class="l_dropdown"><a href="#">PROFIL &#x25BE;</a>
+                            <ul class="l_isi-dropdown">
+                                <li><a href="./pastor_paroki">Pastor Paroki</a></li>
+                                <li><a href="./sejarah">Sejarah</a></li>
+                                <li><a href="./stasi">Stasi</a></li>
+                                <li style="border-bottom: 1px solid black;"><a href="./visi_misi">Visi dan Misi</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li><a href="./kerasulan">KERASULAN</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="./pengumuman">PENGUMUMAN</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="./aula">AULA</a></li>
+                    </ul>
+                </div>
+                
+
+                <div class="H H_R">
+                <ul>
+                    <li class="r_dropdown"><b><a class="r_li_u">{{Session::get('username')}} &#x25BE;</a></b>
+                        <ul class="r_isi-dropdown">
+                            <!-- <li style="margin-top:20px;"><a href="./profil/{{Session::get('username')}}">| EDIT PROFIL</a></li> -->
+                            <li><a href="./logout">| LOGOUT</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="./dashboard" >
+                            <button style="color: white; background-color:orange; 
+                            border-radius: 10px; padding:10px; margin-top:-5;border: 2px solid black">DASHBOARD
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            </nav>
+        </div>
+
+        @elseif(Session::get('role')=='sekretariat')
+        <div class="header">
+            <div class="d_logo">
+                <img class="logo" src="{{ URL::asset('asset/image/logo.png') }}" alt="logo">
+                <header class="name"><b>GEREJA St.YOSEPH Parsoburan</b></header>
+            </div>
+            <!-- <center><hr style="width:750px; border-color:gray; border-top-width:0"></center> -->
+            
+            <label class="btn" for="toggle" onclick="myFunction(this)">
+                <div class="container">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+                <script>
+                    function myFunction(x) {
+                    x.classList.toggle("change");
+                    }
+                </script>
+            </label>
+            <input id="toggle" type="checkbox" />
+            <nav>
+                <div class="H H_L" align="center">  
+                    <ul>
+                        <li>
+                            <a href="./">BERANDA</a>
+                        </li>
+                    </ul>
+                    <!-- <ul>
+                        <li><a href="./profil">PROFIL</a></li>
+                    </ul> -->
+                    <ul style="border-bottom: 1px solid black;">
+                        <li class="l_dropdown"><a href="#">PROFIL &#x25BE;</a>
+                            <ul class="l_isi-dropdown">
+                                <li><a href="./pastor_paroki">Pastor Paroki</a></li>
+                                <li><a href="./sejarah">Sejarah</a></li>
+                                <li><a href="./stasi">Stasi</a></li>
+                                <li style="border-bottom: 1px solid black;"><a href="./visi_misi">Visi dan Misi</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li><a href="./kerasulan">KERASULAN</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="./pengumuman">PENGUMUMAN</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="./aula">AULA</a></li>
+                    </ul>
+                </div>
+                
+
+                <div class="H H_R">
+                <ul>
+                    <li class="r_dropdown"><b><a class="r_li_u">{{Session::get('username')}} &#x25BE;</a></b>
+                        <ul class="r_isi-dropdown">
+                            <!-- <li style="margin-top:20px;"><a href="./profil/{{Session::get('username')}}">| EDIT PROFIL</a></li> -->
+                            <li><a href="./logout">| LOGOUT</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="./dashboard" >
+                            <button style="color: white; background-color:orange; 
+                            border-radius: 10px; padding:10px; margin-top:-5;border: 2px solid black">DASHBOARD
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            </nav>
+        </div>
+
+        @elseif(Session::get('role')=='dpph')
+        <div class="header">
+            <div class="d_logo">
+                <img class="logo" src="{{ URL::asset('asset/image/logo.png') }}" alt="logo">
+                <header class="name"><b>GEREJA St.YOSEPH Parsoburan</b></header>
+            </div>
+            <!-- <center><hr style="width:750px; border-color:gray; border-top-width:0"></center> -->
+            
+            <label class="btn" for="toggle" onclick="myFunction(this)">
+                <div class="container">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+                <script>
+                    function myFunction(x) {
+                    x.classList.toggle("change");
+                    }
+                </script>
+            </label>
+            <input id="toggle" type="checkbox" />
+            <nav>
+                <div class="H H_L" align="center">  
+                    <ul>
+                        <li>
+                            <a href="./">BERANDA</a>
+                        </li>
+                    </ul>
+                    <!-- <ul>
+                        <li><a href="./profil">PROFIL</a></li>
+                    </ul> -->
+                    <ul style="border-bottom: 1px solid black;">
+                        <li class="l_dropdown"><a href="#">PROFIL &#x25BE;</a>
+                            <ul class="l_isi-dropdown">
+                                <li><a href="./pastor_paroki">Pastor Paroki</a></li>
+                                <li><a href="./sejarah">Sejarah</a></li>
+                                <li><a href="./stasi">Stasi</a></li>
+                                <li style="border-bottom: 1px solid black;"><a href="./visi_misi">Visi dan Misi</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li><a href="./kerasulan">KERASULAN</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="./pengumuman">PENGUMUMAN</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="./aula">AULA</a></li>
+                    </ul>
+                </div>
+                
+
+                <div class="H H_R">
+                <ul>
+                    <li class="r_dropdown"><b><a class="r_li_u">{{Session::get('username')}} &#x25BE;</a></b>
+                        <ul class="r_isi-dropdown">
+                            <!-- <li style="margin-top:20px;"><a href="./profil/{{Session::get('username')}}">| EDIT PROFIL</a></li> -->
+                            <li><a href="./logout">| LOGOUT</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="./dashboard" >
+                            <button style="color: white; background-color:orange; 
+                            border-radius: 10px; padding:10px; margin-top:-5;border: 2px solid black">DASHBOARD
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            </nav>
+        </div>
+        @endif
+        
+        @yield('container')
+    </body>
+    <footer>
+        <div align="center">
+        <div class="footer" align="left">
+            <img class="logo" height="80px" width="80px" src="{{ URL::asset('asset/image/logo.jpeg') }}" alt="logo">
+            <p class="f_alamat"><b>Alamat</b><br><br><a>Pastoran Katolik, Jl. Lumban Rau, Parsoburan – 22383</a></p>
+            <p class="f_about_us"><b>About Us</b><br><br><a>Gereja Katolik Paroki St. Yoseph Parsoburan merupakan salah satu paroki Keuskupan agung Medan yang berada di Parsoburan.</a></p>
+            <p class="media_sosial"><b>Media Sosial</b><br><br>
+            <a href="https://youtube.com/channel/UClTZoEYfOnM8vCUyoWak1Yg"><img class="logo_medsos" height="36px" width="36px" src="{{ URL::asset('asset/image/logo youtube.png') }}"></a>
+            <a href="https://www.facebook.com/parokistyoseph.parsoburan"><img class="logo_medsos" height="36px" width="36px" src="{{ URL::asset('asset/image/logo facebook.png') }}"></a>
+            </p>
+            </div>
+        </div>
+        <!-- <div class="footer">
+            <img class="logo" height="80px" width="80px" src="{{ URL::asset('asset/image/logo.jpeg') }}" alt="logo">
+            <p class="f_alamat"><b>Alamat</b><br><br><a>Pastoran Katolik, Jl. Lumban Rau, Parsoburan – 22383</a></p>
+            <p class="f_about_us"><b>About Us</b><br><br><a>Gereja Katolik Paroki St. Yoseph Parsoburan merupakan salah satu paroki Keuskupan agung Medan yang berada di Parsoburan.</a></p>
+            <a href="https://youtube.com/channel/UClTZoEYfOnM8vCUyoWak1Yg"><img class="logo_medsos" height="60px" width="60px" src="{{ URL::asset('asset/image/logo youtube.png') }}"></a>
+            <a href="https://www.facebook.com/parokistyoseph.parsoburan"><img class="logo_medsos" height="60px" width="60px" src="{{ URL::asset('asset/image/logo facebook.png') }}"></a>
+        </div> -->
+    </footer>
+</html>
+
+@else
+<html>
+    <head>
+        <link href="{{ URL::asset('asset/css/style.css') }}" rel="stylesheet">
+        <link rel="icon" href="{{ URL::asset('asset/image/logo.jpeg') }}">
+        <title>@yield('title')</title>
+    </head>
+    <body>
+        <div class="header">
+            <div class="d_logo">
+                <img class="logo" src="{{ URL::asset('asset/image/logo.png') }}" alt="logo">
+                <header class="name"><b>GEREJA St.YOSEPH Parsoburan</b></header>
+            </div>
+            <!-- <center><hr style="width:750px; border-color:gray; border-top-width:0"></center> -->
+            
+            <label class="btn" for="toggle" onclick="myFunction(this)">
+                <div class="container">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </div>
+                <script>
+                    function myFunction(x) {
+                    x.classList.toggle("change");
+                    }
+                </script>
+            </label>
+            <input id="toggle" type="checkbox" />
+            <nav>
+                <div class="H H_L" align="center">  
+                    <ul>
+                        <li>
+                            <a href="./">BERANDA</a>
+                        </li>
+                    </ul>
+                    <!-- <ul>
+                        <li><a href="./profil">PROFIL</a></li>
+                    </ul> -->
+                    <ul style="border-bottom: 1px solid black;">
+                        <li class="l_dropdown"><a href="#">PROFIL &#x25BE;</a>
+                            <ul class="l_isi-dropdown">
+                                <li><a href="./pastor_paroki">Pastor Paroki</a></li>
+                                <li><a href="./sejarah">Sejarah</a></li>
+                                <li><a href="./stasi">Stasi</a></li>
+                                <li style="border-bottom: 1px solid black;"><a href="./visi_misi">Visi dan Misi</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li><a href="./kerasulan">KERASULAN</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="./pengumuman">PENGUMUMAN</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="./aula">AULA</a></li>
+                    </ul>
+                </div>
+                
+
+                <div class="H H_R">
+                    <ul>
+                        <li><a href="./login">LOGIN</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        @yield('container')
+    </body>
+
+    <footer>
+        <div class="footer_d" align="center">
+        <div class="footer" align="left">
+            <img class="logo" height="130px" width="130px" src="{{ URL::asset('asset/image/logo.jpeg') }}" alt="logo">
+            <p class="f_alamat"><b>Alamat</b><br><br><a>Pastoran Katolik, Jl. Lumban Rau, Parsoburan – 22383</a></p>
+            <p class="f_about_us"><b>About Us</b><br><br><a>Gereja Katolik Paroki St. Yoseph Parsoburan merupakan salah satu paroki Keuskupan agung Medan yang berada di Parsoburan.</a></p>
+            <p class="media_sosial"><b>Media Sosial</b><br><br>
+                <a href="https://youtube.com/channel/UClTZoEYfOnM8vCUyoWak1Yg"><img class="logo_medsos" height="36px" width="36px" src="{{ URL::asset('asset/image/logo youtube.png') }}"></a>
+                <a href="https://www.facebook.com/parokistyoseph.parsoburan"><img class="logo_medsos" height="36px" width="36px" src="{{ URL::asset('asset/image/logo facebook.png') }}"></a>
+            </p>
+            </div>
+        </div>
+        <!-- <div class="footer">
+            <img class="logo" height="80px" width="80px" src="{{ URL::asset('asset/image/logo.jpeg') }}" alt="logo">
+            <p class="f_alamat"><b>Alamat</b><br><br><a>Pastoran Katolik, Jl. Lumban Rau, Parsoburan – 22383</a></p>
+            <p class="f_about_us"><b>About Us</b><br><br><a>Gereja Katolik Paroki St. Yoseph Parsoburan merupakan salah satu paroki Keuskupan agung Medan yang berada di Parsoburan.</a></p>
+            <a href="https://youtube.com/channel/UClTZoEYfOnM8vCUyoWak1Yg"><img class="logo_medsos" height="60px" width="60px" src="{{ URL::asset('asset/image/logo youtube.png') }}"></a>
+            <a href="https://www.facebook.com/parokistyoseph.parsoburan"><img class="logo_medsos" height="60px" width="60px" src="{{ URL::asset('asset/image/logo facebook.png') }}"></a>
+        </div> -->
+    </footer>
+</html>
+@endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="t_pengumuman">
+          <table>
+            <tr>
+              <td colspan="2"><text style="font-size:30px; color:544531">PENGUMUMAN TERBARU</text></td>
+            </tr>
+            @foreach($pengumuman as $pengumuman)
+            <tr>
+              <td class="gambar_pengumuman">
+                <img style="border-radius: 5px;" height="65px" width="80px" class="logo" src="./asset/u_file/image/{{$pengumuman->foto_pendukung}}">
+              </td>
+              <td class="info_pengumuman">
+                  
+                <text style="color:8F7655"><b>[{{$pengumuman->kategori_pengumuman}}]</b></text>
+                <a href="./detail_pengumuman/{{$pengumuman->id}}"><text>{{$pengumuman->judul_pengumuman}}</text></a><br>
+                <text style="font-size:15px; color:808080">{{$pengumuman->tanggal}}</text>
+              </td>
+            </tr>
+            @endforeach
+          </table>
+          <!-- <a href="./pengumuman" >
+            <button style="color: white; background-color:orange; 
+            border-radius: 10px; padding:5px; border:1px solid black">Lihat Semua
+            </button>
+          </a> -->
+        </div>
+
+
+
+
+
+
+<div class="lokasi_jadwal">
+      <div class="lokasi">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3352.3003462015845!2d99.34281785127203!3d2.308814407130262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302dfa8c4e364451%3A0xad72fa7565a52b1c!2sGereja%20Katolik%20St.%20Yoseph%20Parsoburan!5e0!3m2!1sid!2sid!4v1620120327064!5m2!1sid!2sid" width="500" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div> 
+
+
+
+
+
+
+
+
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+
+
+
+
+      <p id="demo"></p>
+<script>
+// Mengatur waktu akhir perhitungan mundur
+var countDownDate = new Date("Dec 5, 2021 15:37:25").getTime();
+
+// Memperbarui hitungan mundur setiap 1 detik
+var x = setInterval(function() {
+
+  // Untuk mendapatkan tanggal dan waktu hari ini
+  var now = new Date().getTime();
+    
+  // Temukan jarak antara sekarang dan tanggal hitung mundur
+  var distance = countDownDate - now;
+    
+  // Perhitungan waktu untuk hari, jam, menit dan detik
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Keluarkan hasil dalam elemen dengan id = "demo"
+  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+    
+  // Jika hitungan mundur selesai, tulis beberapa teks 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+ onclick="validation()"
